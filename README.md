@@ -1,6 +1,7 @@
 # StockPicker Crew
 
 An intelligent multi-agent AI system for stock analysis and investment recommendations, powered by [crewAI](https://crewai.com). This project uses collaborative AI agents to analyze trending companies, conduct financial research, and provide investment recommendations based on the latest market news and data.
+    <img width="997" height="753" alt="Screenshot 2025-08-01 093502" src="https://github.com/user-attachments/assets/ff5497e9-d97d-4783-8120-4ff81164a870" />
 
 ## Features
 
@@ -14,23 +15,23 @@ An intelligent multi-agent AI system for stock analysis and investment recommend
 
 ```mermaid
 graph TD
-    A[📰 Financial News yst** - Scans latest news to identify 2-3 trending companies in a specified sector
-2. **Senior Financial Researcher** - Conducts comprehensive analysis of the trending companies
-3. **Stock Picker** - Analyzes research findings and selects the best investment opportunity
-[Trending Companies<br/>JSON Output]
-    B --> E[Research Report
-## Installation
-
-Ensure you have Python >=3.10 <3.14 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management.
-
-1.  I[📋 Analysis Results] --> C
+    A[📰 Financial News Analyst] --> B[🔍 Senior Financial Researcher]
+    B --> C[📊 Stock Picker]
     
-    style  Install UV fe
-    style B fill:#f3e5f5
-    style C fill:#e8f5e8
-    style D fill:#fff3e0
-    style E fill:#fff3e0
-    style F fill:#fff3e0
+    A --> D[Trending Companies<br/>JSON Output]
+    B --> E[Research Report<br/>JSON Output]
+    C --> F[Investment Decision<br/>Markdown Report]
+    
+    G[📈 Market News] --> A
+    H[💰 Financial Data] --> B
+    I[📋 Analysis Results] --> C
+    
+    style A fill:#000000
+    style B fill:#000000
+    style C fill:#000000
+    style D fill:#000000
+    style E fill:#000000
+    style F fill:#000000
 ```
 
 ### Agent Workflow
@@ -39,20 +40,43 @@ The StockPicker Crew consists of three specialized agents working in sequence:
 
 1. **📰 Financial News Analyst** - Scans latest news to identify 2-3 trending companies in a specified sector
 2. **🔍 Senior Financial Researcher** - Conducts comprehensive analysis of the trending companies  
-3. **📊 Stock Picker** - Analyzes research findings and selects the best investment opportunity(if not already installed):
+3. **📊 Stock Picker** - Analyzes research findings and selects the best investment opportunity
+
+## Quick Start
+
+```mermaid
+graph LR
+    A[🐍 Install Python 3.10+] --> B[📦 Install UV]
+    B --> C[⚙️ Install Dependencies]
+    C --> D[🔑 Add API Keys]
+    D --> E[🚀 Run Analysis]
+    
+    style A fill:#00000
+    style B fill:#000000
+    style C fill:#000000
+    style D fill:#000000
+    style E fill:#000000
+```
+
+## Installation
+
+Ensure you have Python >=3.10 <3.14 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management.
+
+1. **Install UV** (if not already installed):
 ```bash
 pip install uv
 ```
 
-2. Navigate to your project directory and install dependencies:
+2. **Install Dependencies**:
 ```bash
 crewai install
 ```
 
-3. **Configure API Keys**: Add your API keys to the `.env` file:
+3. **Configure API Keys** - Add your API keys to the `.env` file:
 ```bash
 # Required for Gemini LLM
 GOOGLE_API_KEY=your_gemini_api_key_here
+SERPER_API_KEY=your_api_key_here
 
 # Optional: Add other API keys as needed
 OPENAI_API_KEY=your_openai_api_key_here
@@ -118,11 +142,6 @@ Each agent can be customized in `src/stock_picker/config/agents.yaml`:
 ## Available Commands
 
 - `crewai run` - Execute the full stock analysis workflow
-- `stock_picker` - Alternative command to run the analysis
-- `train` - Train the crew on historical data
-- `replay` - Replay previous analysis sessions
-- `test` - Run test scenarios
-
 ## Project Structure
 
 ```
@@ -144,18 +163,7 @@ Each agent can be customized in `src/stock_picker/config/agents.yaml`:
 ├── 📁 tests/                      # Test files
 ├── 📄 .env                        # API keys and environment variables
 ├── 📄 pyproject.toml              # Project dependencies and metadata
-└── 📄 README.md                   # This fileies
-│   ├── tools/
-│   │   ├── custom_tool.py   # Custom tools for specialized analysis
-│   │   └── __init__.py
-│   ├── crew.py              # Main crew orchestration logic
-│   ├── main.py              # Entry point and configuration
-│   └── __init__.py
-├── output/                  # Generated reports and analysis results
-├── tests/                   # Test files
-├── .env                     # Environment variables and API keys
-├── pyproject.toml          # Project dependencies and metadata
-└── README.md               # This file
+└── 📄 README.md                   # This file
 ```
 
 ## Requirements
@@ -167,14 +175,11 @@ Each agent can be customized in `src/stock_picker/config/agents.yaml`:
 
 ## Troubleshooting
 
-**API Key Issues**: Ensure your `GOOGLE_API_n the `.env` file
+**API Key Issues**: Ensure your `GOOGLE_API_KEY` is properly set in the `.env` file
+**API Cost Is More** :Ensure the cost
 
-**Dependency Issues**: Try reinstalling with `crewai install` or `uv sync`
-atically when running analysis
 
-## Support
 
-For crewAI framework support:/joaomdmoura/crewa
-- [CrewAI Documentation](https://docs.crewai.com)
-- [GitHub Reposi
-**Output Direc
+---
+
+Let's create wonders together with the power and simplicity of crewAI.
