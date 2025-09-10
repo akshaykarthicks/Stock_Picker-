@@ -576,8 +576,6 @@ def main():
     # Footer
     st.markdown('''
         <div class="footer">
-            <p>StockIntel Analytics &copy; 2025. All Rights Reserved.</p>
-            <p>Powered by AI Technologies and Financial Data Insights</p>
             <p>
                 <a href="https://github.com/akshaykarthicks" target="_blank" style="color: var(--text-secondary); text-decoration: none;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;">
