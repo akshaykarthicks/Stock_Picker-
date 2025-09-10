@@ -533,6 +533,46 @@ def main():
     st.markdown('<a name="results"></a>', unsafe_allow_html=True)
     show_results_page()
 
+    # Agents section
+    st.markdown('<h2 class="section-title">Our Agents</h2>', unsafe_allow_html=True)
+    a1, a2, a3 = st.columns(3)
+    with a1:
+        st.markdown('''
+        <div class="feature-card">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M3,5H21V7H3V5M3,11H21V13H3V11M3,17H15V19H3V17Z" />
+                </svg>
+            </div>
+            <h3 class="feature-title">📰 Financial News Analyst</h3>
+            <p class="feature-desc">Scans real-time financial news to identify 2–3 trending companies in the selected sector.</p>
+        </div>
+        ''', unsafe_allow_html=True)
+    with a2:
+        st.markdown('''
+        <div class="feature-card">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M9,2A7,7 0 0,1 16,9C16,10.73 15.41,12.3 14.41,13.53L21.19,20.31L19.78,21.72L13,14.94C11.77,15.94 10.2,16.53 8.47,16.53A7,7 0 0,1 1.47,9.53A7,7 0 0,1 8.47,2.53M8.47,4.53A5,5 0 0,0 3.47,9.53A5,5 0 0,0 8.47,14.53A5,5 0 0,0 13.47,9.53A5,5 0 0,0 8.47,4.53Z" />
+                </svg>
+            </div>
+            <h3 class="feature-title">🔍 Senior  Researcher</h3>
+            <p class="feature-desc">Performs deep-dive research on fundamentals, sentiment, and competitive positioning.</p>
+        </div>
+        ''', unsafe_allow_html=True)
+    with a3:
+        st.markdown('''
+        <div class="feature-card">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M11 17L6 12L7.41 10.59L11 14.17L16.59 8.58L18 10L11 17Z" />
+                </svg>
+            </div>
+            <h3 class="feature-title">📊 Stock Picker</h3>
+            <p class="feature-desc">Synthesizes findings to select the best opportunity and produce a clear recommendation.</p>
+        </div>
+        ''', unsafe_allow_html=True)
+
     # Footer
     st.markdown('''
         <div class="footer">

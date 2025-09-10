@@ -11,6 +11,30 @@ An intelligent multi-agent AI system for stock analysis and investment recommend
 - **Investment Recommendations**: Provides data-driven stock picking decisions with detailed rationale
 - **Automated Reporting**: Generates structured reports in JSON and Markdown formats
 
+## Curated Showcase (CrewAI Multi‑Agent Patterns)
+
+Curated list of how this project demonstrates intelligent agents collaborating to automate complex workflows.
+
+- **Multi-agent collaboration**
+  - **Role-specialized agents**: `📰 Financial News Analyst`, `🔍 Senior Financial Researcher`, `📊 Stock Picker` coordinate via tasks pipeline defined in `src/stock_picker/config/tasks.yaml` and `src/stock_picker/crew.py`.
+  - **Tool-driven capabilities**: Extendable via `src/stock_picker/tools/` for web search, parsing, and financial data enrichment.
+  - **Handoff patterns**: Outputs from one agent (trending companies) become inputs for the next (deep research) and culminate in a final decision.
+
+- **Finance and research examples**
+  - **Trending discovery**: News scanning to surface 2–3 companies per sector → saves to `output/trending_companies.json`.
+  - **Company deep-dive**: Fundamentals and sentiment synthesis → `output/research_report.json` with market position, growth, and potential.
+  - **Investment decision**: Clear recommendation and rationale → `output/decision.md` ready for PM/analyst review.
+  - **Sectors included**: AI/ML, Healthcare Tech, Renewables, Fintech, E‑commerce, Cybersecurity, EVs, Biotech, Semiconductors, Cloud.
+
+- **Production-ready patterns**
+  - **Config-as-data**: Agents and tasks in YAML (`src/stock_picker/config/agents.yaml`, `src/stock_picker/config/tasks.yaml`) enable safe iteration and quick A/B.
+  - **Deterministic interfaces**: Each stage writes typed artifacts to `output/` enabling retries and offline inspection.
+  - **Streamlit UI for operators**: `src/stock_picker/ui/app.py` runs end‑to‑end flows, visualizes progress, and exposes downloads.
+  - **Environment handling**: `.env` via `python-dotenv` locally, Streamlit Secrets in the cloud; SQLite shim for portability.
+  - **Composable entrypoints**: CLI in `src/stock_picker/main.py` and UI launchers in `pyproject.toml` scripts.
+
+Use this section as a template to compare with other CrewAI systems and to extend this project with additional agents (e.g., risk modeling, valuation, portfolio construction) following the same handoff and artifact patterns.
+
 ## How It Works
 
 ```mermaid
