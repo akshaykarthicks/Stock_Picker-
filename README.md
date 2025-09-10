@@ -72,15 +72,34 @@ pip install uv
 crewai install
 ```
 
-3. **Configure API Keys** - Add your API keys to the `.env` file:
-```bash
-# Required for Gemini LLM
-GOOGLE_API_KEY=your_gemini_api_key_here
-SERPER_API_KEY=your_api_key_here
+3. **Configure API Keys** - You have several options:
 
-# Optional: Add other API keys as needed
-OPENAI_API_KEY=your_openai_api_key_here
+**Option 1: Local Development (.env file)**
+Create a `.env` file in the project root with your API keys:
+```bash
+# Copy .env.example to .env and fill in your keys
+cp .env.example .env
+# Then edit .env with your actual keys
 ```
+
+**Option 2: Environment Variables**
+Set the following environment variables in your system:
+```bash
+GOOGLE_API_KEY=your_gemini_api_key_here
+SERPER_API_KEY=your_serper_api_key_here
+```
+
+**Option 3: Streamlit Cloud Secrets**
+If deploying to Streamlit Cloud, set your keys in Settings → Secrets:
+```
+GOOGLE_API_KEY="your_gemini_api_key"
+SERPER_API_KEY="your_serper_key"
+```
+
+The application will check for keys in this order:
+1. Streamlit Cloud secrets (if deployed)
+2. Environment variables
+3. .env file (for local development)
 
 ## Configuration
 
@@ -101,6 +120,17 @@ Or run directly with Python:
 ```bash
 python -m stock_picker.main
 ```
+
+## Deploy to Streamlit Cloud
+
+1. Push this repo to GitHub.
+2. In Streamlit Cloud, create a new app pointing to `src/stock_picker/ui/app.py` as the entry file.
+3. Set Secrets under Settings → Secrets with:
+```
+GOOGLE_API_KEY="your_gemini_api_key"
+SERPER_API_KEY="your_serper_key"
+```
+4. Deploy. The system reads secrets first, then falls back to environment variables.
 
 The system will:
 1. Search for trending companies in the AI and Machine Learning sector
@@ -176,6 +206,7 @@ Each agent can be customized in `src/stock_picker/config/agents.yaml`:
 ## Troubleshooting
 
 **API Key Issues**: Ensure your `GOOGLE_API_KEY` is properly set in the `.env` file
+**Streamlit Cloud**: Prefer setting keys in Secrets. The UI shows key presence in the sidebar.
 **API Cost Is More** :Ensure the cost
 
 

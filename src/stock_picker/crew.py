@@ -1,4 +1,7 @@
 from crewai import Agent, Crew, Process, Task
+import os
+from dotenv import load_dotenv
+load_dotenv()
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from typing import List
@@ -84,6 +87,9 @@ class StockPicker():
     @crew
     def crew(self) -> Crew:
         """Creates the StockPicker crew"""
+        # Preflight check for Serper key to avoid ambiguous search failures
+        if not os.getenv('SERPER_API_KEY'):
+            raise ValueError("SERPER_API_KEY is not set. Add it to Streamlit Secrets or your environment.")
         # To learn how to add knowledge sources to your crew, check out the documentation:
         # https://docs.crewai.com/concepts/knowledge#what-is-knowledge
         manager=Agent(

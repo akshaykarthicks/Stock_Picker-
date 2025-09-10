@@ -1,0 +1,4 @@
+crewai[tools]>=0.152.0,<1.0.0
+streamlit>=1.38.0,<2.0.0
+python-dotenv>=1.0.0,<2.0.0
+pysqlite3-binary>=0.5.3

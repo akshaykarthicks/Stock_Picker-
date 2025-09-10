@@ -1,8 +1,17 @@
 #!/usr/bin/env python
+# SQLite workaround for cloud environments
+try:
+    __import__('pysqlite3')
+    import sys as _sys
+    _sys.modules['sqlite3'] = _sys.modules.pop('pysqlite3')
+except ImportError:
+    pass
 import sys
 import warnings
-
 from datetime import datetime
+from dotenv import load_dotenv
+
+
 
 from stock_picker.crew import StockPicker
 
@@ -17,6 +26,7 @@ def run():
     """
     Run the Research crew.
     """
+    load_dotenv()
     inputs = {
         'sector': 'AI and Machine Learning'
 
